@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://fengerzou.github.io">
-  <title>Archives | fengerzou的博客</title>
+  <title>vue2学习过程中遇到的一些问题（一） | fengerzou的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="正在努力学习的码农一枚。">
-<meta name="keywords" content="码农，前端，python">
-<meta property="og:type" content="website">
-<meta property="og:title" content="fengerzou的博客">
-<meta property="og:url" content="https://fengerzou.github.io/archives/index.html">
+  <meta name="description" content="#####1. Elements in iteration expect to have ‘v-bind:key’ directives在用 v-for 指令根据一组数组的选项列表进行渲染时，VSCode提示“Elements in iteration expect to have ‘v-bind:key’ directives”。 123&amp;lt;li v-for=&quot;item in items&quot;&amp;">
+<meta name="keywords" content="前端,vue2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue2学习过程中遇到的一些问题（一）">
+<meta property="og:url" content="https://fengerzou.github.io/2018/05/17/vue2学习过程中遇到的一些问题（一）/index.html">
 <meta property="og:site_name" content="fengerzou的博客">
-<meta property="og:description" content="正在努力学习的码农一枚。">
+<meta property="og:description" content="#####1. Elements in iteration expect to have ‘v-bind:key’ directives在用 v-for 指令根据一组数组的选项列表进行渲染时，VSCode提示“Elements in iteration expect to have ‘v-bind:key’ directives”。 123&amp;lt;li v-for=&quot;item in items&quot;&amp;">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-05-17T08:52:45.610Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="fengerzou的博客">
-<meta name="twitter:description" content="正在努力学习的码农一枚。">
+<meta name="twitter:title" content="vue2学习过程中遇到的一些问题（一）">
+<meta name="twitter:description" content="#####1. Elements in iteration expect to have ‘v-bind:key’ directives在用 v-for 指令根据一组数组的选项列表进行渲染时，VSCode提示“Elements in iteration expect to have ‘v-bind:key’ directives”。 123&amp;lt;li v-for=&quot;item in items&quot;&amp;">
   
     <link rel="alternative" href="/atom.xml" title="fengerzou的博客" type="application/atom+xml">
   
@@ -162,36 +163,41 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-vue2学习过程中遇到的一些问题（一）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/17/vue2学习过程中遇到的一些问题（一）/" class="archive-article-date">
-  	<time datetime="2018-05-17T08:52:45.610Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/17/vue2学习过程中遇到的一些问题（一）/">vue2学习过程中遇到的一些问题（一）</a>
+    <h1 class="article-title" itemprop="name">
+      vue2学习过程中遇到的一些问题（一）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/05/17/vue2学习过程中遇到的一些问题（一）/" class="archive-article-date">
+  	<time datetime="2018-05-17T08:52:45.610Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#####1. Elements in iteration expect to have ‘v-bind:key’ directives<br>在用 v-for 指令根据一组数组的选项列表进行渲染时，VSCode提示“Elements in iteration expect to have ‘v-bind:key’ directives”。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-<span class="keyword">for</span>=<span class="string">"item in items"</span>&gt;</span><br><span class="line"> &lt;span&gt;&#123;&#123;item.text&#125;&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>li&gt;</span><br></pre></td></tr></table></figure>
+<p>官方给出的解释是：当 Vue.js 用 v-for 正在更新已渲染过的元素列表时，它默认用“就地复用”策略。如果数据项的顺序被改变，Vue 将不会移动 DOM 元素来匹配数据项的顺序， 而是简单复用此处每个元素，并且确保它在特定索引下显示已被渲染过的每个元素。这个类似 Vue 1.x 的 track-by=”$index” 。</p>
+<p>这个默认的模式是高效的，但是只适用于不依赖子组件状态或临时 DOM 状态 (例如：表单输入值) 的列表渲染输出。</p>
+<p>为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key 属性。理想的 key 值是每项都有的且唯一的 id。这个特殊的属性相当于 Vue 1.x 的 track-by ，但它的工作方式类似于一个属性，所以你需要用 v-bind 来绑定动态值 (在这里使用简写)：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-<span class="keyword">for</span>=<span class="string">"item in items"</span> :key=<span class="string">"item.id"</span>&gt;</span><br><span class="line">  &lt;!-- 内容 --&gt;</span><br><span class="line">&lt;<span class="regexp">/li&gt;</span></span><br></pre></td></tr></table></figure>
+<p>建议尽可能在使用 v-for 时提供 key，除非遍历输出的 DOM 内容非常简单，或者是刻意依赖默认行为以获取性能上的提升。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -207,61 +213,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://fengerzou.github.io/2018/05/17/vue2学习过程中遇到的一些问题（一）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/15/hello-world/" class="archive-article-date">
-  	<time datetime="2018-05-15T09:42:05.088Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-15</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/05/15/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/15/hello-world/">Hello World</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">helloWrold</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -284,8 +335,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
