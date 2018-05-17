@@ -184,7 +184,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#####1. Elements in iteration expect to have ‘v-bind:key’ directives<br>在用 v-for 指令根据一组数组的选项列表进行渲染时，VSCode提示“Elements in iteration expect to have ‘v-bind:key’ directives”。</p>
+        <h5 id="1-Elements-in-iteration-expect-to-have-‘v-bind-key’-directives"><a href="#1-Elements-in-iteration-expect-to-have-‘v-bind-key’-directives" class="headerlink" title="1. Elements in iteration expect to have ‘v-bind:key’ directives"></a>1. Elements in iteration expect to have ‘v-bind:key’ directives</h5><p>在用 v-for 指令根据一组数组的选项列表进行渲染时，VSCode提示“Elements in iteration expect to have ‘v-bind:key’ directives”。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;li v-<span class="keyword">for</span>=<span class="string">"item in items"</span>&gt;</span><br><span class="line"> &lt;span&gt;&#123;&#123;item.text&#125;&#125;&lt;<span class="regexp">/span&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>li&gt;</span><br></pre></td></tr></table></figure>
 <p>官方给出的解释是：当 Vue.js 用 v-for 正在更新已渲染过的元素列表时，它默认用“就地复用”策略。如果数据项的顺序被改变，Vue 将不会移动 DOM 元素来匹配数据项的顺序， 而是简单复用此处每个元素，并且确保它在特定索引下显示已被渲染过的每个元素。这个类似 Vue 1.x 的 track-by=”$index” 。</p>
 <p>这个默认的模式是高效的，但是只适用于不依赖子组件状态或临时 DOM 状态 (例如：表单输入值) 的列表渲染输出。</p>
