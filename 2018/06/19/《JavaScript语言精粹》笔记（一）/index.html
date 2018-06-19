@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="fengerzou的博客">
 <meta property="og:description" content="第2章 语法数字JavaScript只有一个数字类型。它在内部被表示为64位的浮点数，和java的double数字类型一样。与其他大多数编程语言不同的是，它没有分离出整数类型，所以1和1.0的值相同。 如果一个数字字面量有指数部分，那么这个字面量的值等于e之前的数字与10的e之后的数字的次方相乘。 NaN是一个数值，它表示一个不能产生正常结果的运算结果。NaN不等于任何值，包括它自己。可以用函数i">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-19T02:18:35.161Z">
+<meta property="og:updated_time" content="2018-06-19T02:58:21.690Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《JavaScript语言精粹》笔记（一）">
 <meta name="twitter:description" content="第2章 语法数字JavaScript只有一个数字类型。它在内部被表示为64位的浮点数，和java的double数字类型一样。与其他大多数编程语言不同的是，它没有分离出整数类型，所以1和1.0的值相同。 如果一个数字字面量有指数部分，那么这个字面量的值等于e之前的数字与10的e之后的数字的次方相乘。 NaN是一个数值，它表示一个不能产生正常结果的运算结果。NaN不等于任何值，包括它自己。可以用函数i">
@@ -205,6 +205,15 @@
 <p>其它均为真，包括true，字符串“false”，以及所有的对象。</p>
 <p>try语句执行一个代码块，并捕获该代码块抛出的任何异常，catch从句定义一个新的变量来接收抛出的异常对象。throw语句抛出一个异常。如果throw语句在一个try代码块中，那么控制流会跳转到catch从句中。如果throw语句在函数中，则该函数调用被放弃，控制流跳转到调用该函数的try语句的catch从句中。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">  &#123;</span><br><span class="line">  <span class="keyword">var</span> x=<span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>).value;</span><br><span class="line">  <span class="keyword">if</span>(x==<span class="string">""</span>)    <span class="keyword">throw</span> <span class="string">"empty"</span>;</span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">isNaN</span>(x)) <span class="keyword">throw</span> <span class="string">"not a number"</span>;</span><br><span class="line">  <span class="keyword">if</span>(x&gt;<span class="number">10</span>)     <span class="keyword">throw</span> <span class="string">"too high"</span>;</span><br><span class="line">  <span class="keyword">if</span>(x&lt;<span class="number">5</span>)      <span class="keyword">throw</span> <span class="string">"too low"</span>;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">catch</span>(err)</span><br><span class="line">  &#123;</span><br><span class="line">  <span class="keyword">var</span> y=<span class="built_in">document</span>.getElementById(<span class="string">"mess"</span>);</span><br><span class="line">  y.innerHTML=<span class="string">"Error: "</span> + err + <span class="string">"."</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;h1&gt;My First JavaScript&lt;/</span>h1&gt;</span><br><span class="line">&lt;p&gt;Please input a number between <span class="number">5</span> and <span class="number">10</span>:&lt;/p&gt;</span><br><span class="line">&lt;input id=<span class="string">"demo"</span> type=<span class="string">"text"</span>&gt;</span><br><span class="line">&lt;button type=<span class="string">"button"</span> onclick=<span class="string">"myFunction()"</span>&gt;Test Input&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">&lt;p id="mess"&gt;&lt;/</span>p&gt;</span><br></pre></td></tr></table></figure></p>
 <p>return语句会导致从函数中提前返回。它可以指定要被返回的值，如果没有指定则默认为undefined。JavaScript不允许在return关键字和表达式之间换行。</p>
+<p><strong>第3章</strong><br><em>对象</em><br>一个对象字面量就是包围在一对花括号中的零或多个“名/值”对。如果属性名是一个合法的JavaScript标识符且不是保留字，则并不强制要求用引号括住属性名。所以用括号括住如”first-name“是必需的（JavaScript的标识符中包含连接符‘-’是不合法的，但允许包含下划线），但是否括住”first_name“是可选的。</p>
+<p>在检索对象里包含的值（属性值可以是出undefined值之外的任何值）时，||运算符可以用来填充默认值：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> middle = stooge[<span class="string">"middle-name"</span>] || <span class="string">"(none)"</span>;</span><br><span class="line"><span class="keyword">var</span> status = flight.status || <span class="string">"unknown"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>检索一个并不存在的成员属性的值，将会返回undefined。尝试从undefined的成员属性中取值将会导致TypeError异常，这时可以通过&amp;&amp;运算符来避免错误。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flight.equipment <span class="comment">//undefined</span></span><br><span class="line">flight.equipment.model <span class="comment">//throw "TypeError"</span></span><br><span class="line">flight.equipment &amp;&amp; flight.equipment.model <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure></p>
+<p>对象通过引用来传递，它们永远不会被复制。</p>
+<p>每个对象都链接到一个原型对象，并且它可以从中继承属性。所有通过对象字面量创建的对象都链接到Object.prototype，它是JavaScript中的标配对象。</p>
+<p>当创建一个新对象时，可以选择某个对象作为它的原型。原型链接只有在检索值的时候才被用到。如果我们尝试去获取对象的某个属性值，但该对象没有此属性名，那么JavaScript会试着从原型对象中获取属性值，如果那个原型对象也没有该属性，再从它的原型中寻找，以此类推，直到该过程最后到达终点Object.prototype。如果想要的属性完全不存在与原型链中，那么结果就是undefined。这个过程称为委托。</p>
+<p>如果我们添加一个新的属性到原型中，该属性会立即对所有基于该原型创建的对象可见。</p>
+<p>使用hasOwnProperty方法确定属性，如果对象拥有独有的属性，它将返回true。该方法不会检查原型链。</p>
+<p>JavaScript可以很随意地定义全局变量来容纳应用的所有资源，遗憾地是，全局变量削弱了程序的灵活性，应该避免使用。最小化使用全局变量的方法之一是为应用创建一个唯一的全局变量。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MYAPP = &#123;&#125;;</span><br><span class="line">MYAPP.stooge = &#123;</span><br><span class="line">  <span class="string">"first-name"</span>: <span class="string">"Joe"</span>,</span><br><span class="line">  <span class="string">"last0name"</span>: <span class="string">"Howard"</span></span><br><span class="line">&#125;;</span><br><span class="line">MYAPP.flight = &#123;</span><br><span class="line">  airline: <span class="string">"Oceanic"</span>,</span><br><span class="line">  number: <span class="number">815</span>,</span><br><span class="line">  departure: &#123;</span><br><span class="line">    IATA: <span class="string">"SYD"</span>,</span><br><span class="line">    time: <span class="string">"2004-09-22 14:55"</span></span><br><span class="line">    city: <span class="string">"Sydeny"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  arrival: &#123;</span><br><span class="line">    IATA: <span class="string">"LAX"</span>,</span><br><span class="line">    time: <span class="string">"2004-09-23 10:42"</span>,</span><br><span class="line">    city: <span class="string">"Los Angeles"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -420,6 +429,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">babel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">vue2</a>
               </li>
              
@@ -429,14 +446,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">helloWrold</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">babel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>
