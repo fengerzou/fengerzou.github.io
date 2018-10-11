@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://fengerzou.github.io">
   <title>webpack+babel学习中遇到的一些问题（一） | fengerzou的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="webpack的一些配置入口（entry）指示 webpack 应该使用哪个模块来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。 每个依赖项随即被处理，最后输出到称之为 bundles 的文件中。 出口（output）output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，默认值为 ./d">
+  <meta name="description" content="webpack的一些配置入口（entry）指示 webpack 应该使用哪个模块来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。 每个依赖项随即被处理，最后输出到称之为 bundles 的文件中。">
 <meta name="keywords" content="前端,babel,webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack+babel学习中遇到的一些问题（一）">
 <meta property="og:url" content="https://fengerzou.github.io/2018/06/08/webpack+babel学习中遇到的一些问题（一）/index.html">
 <meta property="og:site_name" content="fengerzou的博客">
-<meta property="og:description" content="webpack的一些配置入口（entry）指示 webpack 应该使用哪个模块来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。 每个依赖项随即被处理，最后输出到称之为 bundles 的文件中。 出口（output）output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，默认值为 ./d">
+<meta property="og:description" content="webpack的一些配置入口（entry）指示 webpack 应该使用哪个模块来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。 每个依赖项随即被处理，最后输出到称之为 bundles 的文件中。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://fengerzou.github.io/assets/imgs/babel-01.png">
-<meta property="og:updated_time" content="2018-06-08T05:43:17.108Z">
+<meta property="og:updated_time" content="2018-10-11T07:34:05.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack+babel学习中遇到的一些问题（一）">
-<meta name="twitter:description" content="webpack的一些配置入口（entry）指示 webpack 应该使用哪个模块来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。 每个依赖项随即被处理，最后输出到称之为 bundles 的文件中。 出口（output）output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，默认值为 ./d">
+<meta name="twitter:description" content="webpack的一些配置入口（entry）指示 webpack 应该使用哪个模块来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。 每个依赖项随即被处理，最后输出到称之为 bundles 的文件中。">
 <meta name="twitter:image" content="https://fengerzou.github.io/assets/imgs/babel-01.png">
   
     <link rel="alternative" href="/atom.xml" title="fengerzou的博客" type="application/atom+xml">
@@ -65,8 +65,6 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/前端/">前端</a></li>
-	        
-				<li><a href="/tags/python/">python</a></li>
 	        
 				<li><a href="/tags/随笔/">随笔</a></li>
 	        
@@ -126,8 +124,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -144,13 +140,11 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/前端/">前端</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/前端/">前端</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/python/">python</a></li>
-		        
-					<li style="width: 25%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 33.333333333333336%"><a href="/tags/随笔/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -186,8 +180,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><strong>webpack的一些配置</strong><br><strong>入口（entry）</strong><br>指示 webpack 应该使用哪个模块来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。</p>
-<p>每个依赖项随即被处理，最后输出到称之为 bundles 的文件中。</p>
-<p><strong>出口（output）</strong><br>output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，默认值为 ./dist。基本上，整个应用程序结构，都会被编译到你指定的输出路径的文件夹中。</p>
+<p>每个依赖项随即被处理，最后输出到称之为 bundles 的文件中。<br><a id="more"></a><br><strong>出口（output）</strong><br>output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，默认值为 ./dist。基本上，整个应用程序结构，都会被编译到你指定的输出路径的文件夹中。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:&#123;      <span class="comment">// 这里应用程序开始执行</span></span><br><span class="line">				 <span class="comment">// webpack 开始打包</span></span><br><span class="line">        main:__dirname+<span class="string">'/src/main.js'</span> <span class="comment">//入口</span></span><br><span class="line">    &#125;,</span><br><span class="line">    output:&#123;</span><br><span class="line">	    <span class="comment">// webpack 如何输出结果的相关选项</span></span><br><span class="line">        filename:<span class="string">'bundle.js'</span>, <span class="comment">//输出的文件名</span></span><br><span class="line">        path:path.resolve(__dirname,<span class="string">'build'</span>)   <span class="comment">// 所有输出文件的目标路径</span></span><br><span class="line">	    <span class="comment">// 必须是绝对路径（使用 Node.js 的 path 模块）</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>目录结构如下图所示<br><img src="/assets/imgs/babel-01.png" alt="目录"></p>
 <p>在执行npm run build的时候，终端提示“WARNING in configuration<br>The ‘mode’ option has not been set, webpack will fallback to ‘production’ for this value. Set ‘mode’ option to ‘development’ or ‘production’ to enable defaults for each environment.You can also set it to ‘none’ to disable any default behavior. Learn more: <a href="https://webpack.js.org/concepts/mode/”。" target="_blank" rel="noopener">https://webpack.js.org/concepts/mode/”。</a><br>该警告指的是没有设定是开发模式还是生产模式，要求指定。</p>
@@ -345,7 +338,7 @@
             verify: verify,
             app_id: "Qo4PGwbiN4ddoVDKTfVVAI2t-gzGzoHsz",
             app_key: "DFfRNX2NTuLBQ7jrQcaf3RKj",
-            placeholder: "Just go go",
+            placeholder: "畅所欲言~",
             avatar:"mm"
         });
     }
@@ -456,11 +449,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">babel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color5">vue2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -472,7 +461,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vue2</a>
+                <a href="javascript:void(0)" class="js-tag color1">babel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
             
             <div class="clearfix"></div>
