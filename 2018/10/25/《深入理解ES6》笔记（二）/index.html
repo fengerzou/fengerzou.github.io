@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="fengerzou的博客">
 <meta property="og:description" content="第4章 扩展对象的功能性 对象字面量语法扩展 在ECMAScript5及更早版本中，对象字面量只是简单的键值对集合，这意味着初始化属性值时会有一些重复，举个例子：123456function createPerson(name,age) &amp;#123;	return &amp;#123;		name: name,		age: age	&amp;#125;&amp;#125; 这段代码中的createPerson()函数创建">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-25T13:35:16.321Z">
+<meta property="og:updated_time" content="2018-10-25T13:38:06.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入理解ES6》笔记（二）">
 <meta name="twitter:description" content="第4章 扩展对象的功能性 对象字面量语法扩展 在ECMAScript5及更早版本中，对象字面量只是简单的键值对集合，这意味着初始化属性值时会有一些重复，举个例子：123456function createPerson(name,age) &amp;#123;	return &amp;#123;		name: name,		age: age	&amp;#125;&amp;#125; 这段代码中的createPerson()函数创建">
@@ -183,7 +183,7 @@
 <p>这段代码中的createPerson()函数创建了一个对象，其属性名和函数的参数相同，在返回的结果中，name和age分别重复了两遍，只是其中一个是对象属性的名称，另一个是为属性赋值的变量。</p>
 <p>在ES6中，通过使用属性初始化的简写语法，可以消除这种属性名称与局部变量之间的重复书写。当一个对象的属性与本地变量同名时，不必再写冒号和值，简单地只写属性名即可。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		name,</span><br><span class="line">		age</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当对象字面量里只有一个属性的名称时，JavaScript引擎会在可访问作用域中查找其同名变量；如果找到，则该变量的值被赋给对象字面量里的同名属性。</p>
+<p>当对象字面量里只有一个属性的名称时，JavaScript引擎会在可访问作用域中查找其同名变量；如果找到，则该变量的值被赋给对象字面量里的同名属性。<br><a id="more"></a></p>
 <p><em>对象方法的简写语法</em></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">	name: <span class="string">"Nicholas"</span>,</span><br><span class="line">	sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.name)	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>ES6中，对象方法消除了冒号和function关键字。</p>
@@ -475,15 +475,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">vue2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">babel</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vue2</a>
               </li>
             
             <div class="clearfix"></div>
