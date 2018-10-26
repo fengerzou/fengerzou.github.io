@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://fengerzou.github.io">
-  <title>Archives | fengerzou的博客</title>
+  <title>《深入理解ES6》笔记（三） | fengerzou的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="正在努力学习的搬砖工。">
-<meta name="keywords" content="码农，前端，python">
-<meta property="og:type" content="website">
-<meta property="og:title" content="fengerzou的博客">
-<meta property="og:url" content="https://fengerzou.github.io/archives/index.html">
+  <meta name="description" content="第5章 解构：使数据访问更便捷 对象解构 对象解构的语法形式是在一个赋值操作符左边放置一个对象字面量，例如：123456789let node = &amp;#123;	type: &quot;Identifier&quot;,	name: &quot;foo&quot;&amp;#125;;let &amp;#123; type, name &amp;#125; = node;console.log(type); //Identifierconsole.log(na">
+<meta name="keywords" content="前端,ES6">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《深入理解ES6》笔记（三）">
+<meta property="og:url" content="https://fengerzou.github.io/2018/10/26/《深入理解ES6》笔记（三）/index.html">
 <meta property="og:site_name" content="fengerzou的博客">
-<meta property="og:description" content="正在努力学习的搬砖工。">
+<meta property="og:description" content="第5章 解构：使数据访问更便捷 对象解构 对象解构的语法形式是在一个赋值操作符左边放置一个对象字面量，例如：123456789let node = &amp;#123;	type: &quot;Identifier&quot;,	name: &quot;foo&quot;&amp;#125;;let &amp;#123; type, name &amp;#125; = node;console.log(type); //Identifierconsole.log(na">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-26T11:55:37.077Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="fengerzou的博客">
-<meta name="twitter:description" content="正在努力学习的搬砖工。">
+<meta name="twitter:title" content="《深入理解ES6》笔记（三）">
+<meta name="twitter:description" content="第5章 解构：使数据访问更便捷 对象解构 对象解构的语法形式是在一个赋值操作符左边放置一个对象字面量，例如：123456789let node = &amp;#123;	type: &quot;Identifier&quot;,	name: &quot;foo&quot;&amp;#125;;let &amp;#123; type, name &amp;#125; = node;console.log(type); //Identifierconsole.log(na">
   
     <link rel="alternative" href="/atom.xml" title="fengerzou的博客" type="application/atom+xml">
   
@@ -156,36 +157,73 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-《深入理解ES6》笔记（三）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      《深入理解ES6》笔记（三）
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/26/《深入理解ES6》笔记（三）/" class="archive-article-date">
+
+        
+        <a href="/2018/10/26/《深入理解ES6》笔记（三）/" class="archive-article-date">
   	<time datetime="2018-10-26T11:55:22.548Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-26</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/26/《深入理解ES6》笔记（三）/">《深入理解ES6》笔记（三）</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>第5章 解构：使数据访问更便捷</strong></p>
+<p><em>对象解构</em></p>
+<p>对象解构的语法形式是在一个赋值操作符左边放置一个对象字面量，例如：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = &#123;</span><br><span class="line">	type: <span class="string">"Identifier"</span>,</span><br><span class="line">	name: <span class="string">"foo"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; type, name &#125; = node;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(type); <span class="comment">//Identifier</span></span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">//foo</span></span><br></pre></td></tr></table></figure></p>
+<p>在这段代码中，node.type的值被存储在名为type的变量中；node.name的值被存储在名为name的变量中。如果使用var、let或const解构声明变量，则必须要提供初始化程序（也就是等号右侧的值）。</p>
+<p><em>解构赋值</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = &#123;</span><br><span class="line">	type: <span class="string">"Identifier"</span>,</span><br><span class="line">	name: <span class="string">"foo"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> type = <span class="string">"Nicholas"</span>,</span><br><span class="line">	name = <span class="number">5</span>;</span><br><span class="line"> (&#123; type, name&#125; = node);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(type); <span class="comment">//Identifier</span></span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">//foo</span></span><br></pre></td></tr></table></figure>
+<p>在这个示例中，声明变量type和name时初始化了一个值，在后面几行中，通过解构赋值的方法，从node对象读取相应的值重新为这两个变量赋值。请注意，一定要用一对小括号包裹解构赋值语句，JavaScript引擎将一对开放的花括号视为一个代码块，而语法规定，代码块语句不允许出现在赋值语句左侧，添加小括号后可以将块语句转化为一个表达式，从而实现整个解构赋值的过程。解构赋值表达式的值与表达式右侧（也就是=右侧）的值相等，如此一来，在任何可以使用值的地方你都可以使用解构赋值表达式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = &#123;</span><br><span class="line">	type: <span class="string">"Identifier"</span>,</span><br><span class="line">	name: <span class="string">"foo"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> type = <span class="string">"Nicholas"</span>,</span><br><span class="line">	name = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outputInfo</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(value === node);   <span class="comment">//true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> outputInfo(&#123; type, name&#125; = node);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(type); <span class="comment">//Identifier</span></span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">//foo</span></span><br></pre></td></tr></table></figure>
+<p>解构赋值表达式（也就是=右侧的表达式）如果为null或undefined会导致程序抛出错误。<br><a id="more"></a></p>
+<p><em>默认值</em></p>
+<p>使用解构赋值表达式时，如果指定的局部变量名称在对象中不存在，那么这个局部变量会被赋值为undefined：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = &#123;</span><br><span class="line">	type: <span class="string">"Identifier"</span>,</span><br><span class="line">	name: <span class="string">"foo"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; type, name, value &#125; = node;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(value); <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(type); <span class="comment">//Identifier</span></span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">//foo</span></span><br></pre></td></tr></table></figure>
+<p>当指定的属性不存在时，可以随意定义一个默认值，在属性名称后添加一个等号和相应的默认值即可：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = &#123;</span><br><span class="line">	type: <span class="string">"Identifier"</span>,</span><br><span class="line">	name: <span class="string">"foo"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; type, name, value = <span class="literal">true</span> &#125; = node;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(value); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(type); <span class="comment">//Identifier</span></span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">//foo</span></span><br></pre></td></tr></table></figure>
+<p><em>为非同名局部变量赋值</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = &#123;</span><br><span class="line">	type: <span class="string">"Identifier"</span>,</span><br><span class="line">	name: <span class="string">"foo"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; <span class="attr">type</span>: localType, <span class="attr">name</span>: lcoalName &#125; = node;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(localType); <span class="comment">//Identifier</span></span><br><span class="line"><span class="built_in">console</span>.log(lcoalName); <span class="comment">//foo</span></span><br></pre></td></tr></table></figure>
+<p>type:localType语法的含义是读取名为type的属性并将其值存储在变量localType中，这种语法实际上与传统对象字面量相悖，原来的语法名称在冒号左边，值在右边；现在变量名称在冒号右边，而需要读取的位置（对象的属性名）在左边。当使用其他变量名进行赋值时也可以添加默认值，只需要在变量名后添加等号和默认值即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = &#123;</span><br><span class="line">	type: <span class="string">"Identifier"</span>,</span><br><span class="line">	<span class="comment">// name: "foo"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; <span class="attr">type</span>: localType, <span class="attr">name</span>: lcoalName = <span class="string">"bar"</span> &#125; = node;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(localType); <span class="comment">//Identifier</span></span><br><span class="line"><span class="built_in">console</span>.log(lcoalName); <span class="comment">//bar</span></span><br></pre></td></tr></table></figure>
+<p><em>嵌套对象解构</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = &#123;</span><br><span class="line">	type: <span class="string">"Identifier"</span>,</span><br><span class="line">	name: <span class="string">"foo"</span>,</span><br><span class="line">	loc: &#123;</span><br><span class="line">		start: &#123;</span><br><span class="line">			line: <span class="number">1</span>,</span><br><span class="line">			column: <span class="number">1</span></span><br><span class="line">		&#125;,</span><br><span class="line">		end: &#123;</span><br><span class="line">			line: <span class="number">1</span>,</span><br><span class="line">			column: <span class="number">4</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; <span class="attr">loc</span>: &#123; start &#125;&#125; = node;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(start.line); <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(start.column); <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
+<p>在这个示例中，我们在解构模式中使用了花括号，其含义为在找到node对象中loc属性后，应当深入一层继续查找start属性。上面的解构示例中，所有冒号前的标识符都代表在对象中的检索位置，其右侧为被赋值的变量名。</p>
+<p><em>数组结构</em></p>
+<p>与对象解构的语法相比，数组结构就简单多了，它使用的是数组字面量，且解构操作全部在数组内完成，而不是像对象字面量语法一样使用对象的命名属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [ <span class="string">"red"</span>,<span class="string">"green"</span>, <span class="string">"blue"</span>];</span><br><span class="line"><span class="keyword">let</span> [ firstColor, secondColor ] = colors;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(firstColor); <span class="comment">//red</span></span><br><span class="line"><span class="built_in">console</span>.log(secondColor); <span class="comment">//green</span></span><br></pre></td></tr></table></figure>
+<p>在数组解构语法中，我们通过值在数组中的位置选取，且可以将其存储在任意变量中，未显式声明的元素都会直接被忽略。在这个过程中，数组本身不会发生任何变化。在解构模式中，也可以直接省略元素，只为感兴趣的元素提供变量名。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [ <span class="string">"red"</span>,<span class="string">"green"</span>, <span class="string">"blue"</span>];</span><br><span class="line"><span class="keyword">let</span> [ , , thirdColor] = colors;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(thirdColor); <span class="comment">//blue</span></span><br></pre></td></tr></table></figure>
+<p>数组解构语法还有一个独特的用例：交换两个变量值，无需引入第三个临时变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">1</span>,</span><br><span class="line">	b = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">[ a, b ] = [ b, a ];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
+<p>数组的解构赋值与默认值参考对象字面量的解构赋值和默认值。</p>
+<p><em>嵌套数组解构</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [ <span class="string">"red"</span>, [ <span class="string">"green"</span>, <span class="string">"lightgreen"</span> ], <span class="string">"blue"</span> ];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [ firstColor, [ secondColor ] ] = colors;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(firstColor); <span class="comment">//red</span></span><br><span class="line"><span class="built_in">console</span>.log(secondColor); <span class="comment">//green</span></span><br></pre></td></tr></table></figure>
+<p><em>不定元素</em></p>
+<p>在数组中，可以通过…语法将数组中的其余元素赋值给一个特定的变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [ <span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span> ];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [ firstColor, ...restColors] = colors;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(firstColor); <span class="comment">//red</span></span><br><span class="line"><span class="built_in">console</span>.log(restColors.length); <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(restColors[<span class="number">0</span>]); <span class="comment">//green</span></span><br><span class="line"><span class="built_in">console</span>.log(restColors[<span class="number">1</span>]); <span class="comment">//blue</span></span><br></pre></td></tr></table></figure>
+<p>数组colors中的第一个元素被赋值给了firstColor，其余的元素被赋值给restColors数组，所以restColors中包含两个元素。不定元素语法有助于从数组中提取特定元素并保证其余元素可用。不定元素必须为最后一个条目。可以利用不定元素的语法来实现复制一个数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> colors = [ <span class="string">"red"</span>, <span class="string">"green"</span>, <span class="string">"blue"</span> ];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [ ...clonedColors] = colors;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(clonedColors); <span class="comment">//["red", "green", "blue"]</span></span><br></pre></td></tr></table></figure>
+<p><em>混合结构</em></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = &#123;</span><br><span class="line">	type : <span class="string">"Identifier"</span>,</span><br><span class="line">	name: <span class="string">"foo"</span>,</span><br><span class="line">	loc: &#123;</span><br><span class="line">		start: &#123;</span><br><span class="line">			line: <span class="number">1</span>,</span><br><span class="line">			column: <span class="number">1</span></span><br><span class="line">		&#125;,</span><br><span class="line">		end: &#123;</span><br><span class="line">			line: <span class="number">1</span>,</span><br><span class="line">			column: <span class="number">4</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	range: [<span class="number">0</span>, <span class="number">3</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123;</span><br><span class="line">	loc: &#123; start &#125;,</span><br><span class="line">	range: [ startIndex ]</span><br><span class="line">&#125; = node;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(start.line); <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(start.column); <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(startIndex); <span class="comment">//0</span></span><br></pre></td></tr></table></figure>
+<p>这种方法极为有效，尤其是当你从JSON配置中提取信息时，不再需要遍历整个结构了。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -201,271 +239,133 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://fengerzou.github.io/2018/10/26/《深入理解ES6》笔记（三）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/25/《深入理解ES6》笔记（二）/" class="archive-article-date">
-  	<time datetime="2018-10-25T13:34:53.314Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-25</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/25/《深入理解ES6》笔记（二）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《深入理解ES6》笔记（二）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/25/《深入理解ES6》笔记（二）/">《深入理解ES6》笔记（二）</a>
-    </h1>
+        
+        
+    </div>
+</aside>
+
+
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/10/《深入理解ES6》笔记（一）/" class="archive-article-date">
-  	<time datetime="2018-10-10T09:58:00.377Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/10/《深入理解ES6》笔记（一）/">《深入理解ES6》笔记（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/19/《JavaScript语言精粹》笔记（一）/" class="archive-article-date">
-  	<time datetime="2018-06-19T02:11:55.142Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/19/《JavaScript语言精粹》笔记（一）/">《JavaScript语言精粹》笔记（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/06/08/webpack+babel学习中遇到的一些问题（一）/" class="archive-article-date">
-  	<time datetime="2018-06-08T05:31:33.039Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/08/webpack+babel学习中遇到的一些问题（一）/">webpack+babel学习中遇到的一些问题（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">babel</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/17/vue2学习过程中遇到的一些问题（一）/" class="archive-article-date">
-  	<time datetime="2018-05-17T08:52:45.610Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/17/vue2学习过程中遇到的一些问题（一）/">vue2学习过程中遇到的一些问题（一）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">vue2</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/15/hello-world/" class="archive-article-date">
-  	<time datetime="2018-05-15T09:42:05.088Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">helloWrold</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "Qo4PGwbiN4ddoVDKTfVVAI2t-gzGzoHsz",
+            app_key: "DFfRNX2NTuLBQ7jrQcaf3RKj",
+            placeholder: "畅所欲言~",
+            avatar:"mm"
+        });
+    }
+</script>
+    </section>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -488,8 +388,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
