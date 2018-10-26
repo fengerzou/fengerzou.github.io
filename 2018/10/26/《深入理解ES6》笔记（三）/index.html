@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="fengerzou的博客">
 <meta property="og:description" content="第5章 解构：使数据访问更便捷 对象解构 对象解构的语法形式是在一个赋值操作符左边放置一个对象字面量，例如：123456789let node = &amp;#123;	type: &quot;Identifier&quot;,	name: &quot;foo&quot;&amp;#125;;let &amp;#123; type, name &amp;#125; = node;console.log(type); //Identifierconsole.log(na">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-26T11:55:37.077Z">
+<meta property="og:updated_time" content="2018-10-26T11:59:13.860Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《深入理解ES6》笔记（三）">
 <meta name="twitter:description" content="第5章 解构：使数据访问更便捷 对象解构 对象解构的语法形式是在一个赋值操作符左边放置一个对象字面量，例如：123456789let node = &amp;#123;	type: &quot;Identifier&quot;,	name: &quot;foo&quot;&amp;#125;;let &amp;#123; type, name &amp;#125; = node;console.log(type); //Identifierconsole.log(na">
@@ -185,7 +185,8 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = &#123;</span><br><span class="line">	type: <span class="string">"Identifier"</span>,</span><br><span class="line">	name: <span class="string">"foo"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> type = <span class="string">"Nicholas"</span>,</span><br><span class="line">	name = <span class="number">5</span>;</span><br><span class="line"> (&#123; type, name&#125; = node);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(type); <span class="comment">//Identifier</span></span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">//foo</span></span><br></pre></td></tr></table></figure>
 <p>在这个示例中，声明变量type和name时初始化了一个值，在后面几行中，通过解构赋值的方法，从node对象读取相应的值重新为这两个变量赋值。请注意，一定要用一对小括号包裹解构赋值语句，JavaScript引擎将一对开放的花括号视为一个代码块，而语法规定，代码块语句不允许出现在赋值语句左侧，添加小括号后可以将块语句转化为一个表达式，从而实现整个解构赋值的过程。解构赋值表达式的值与表达式右侧（也就是=右侧）的值相等，如此一来，在任何可以使用值的地方你都可以使用解构赋值表达式。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = &#123;</span><br><span class="line">	type: <span class="string">"Identifier"</span>,</span><br><span class="line">	name: <span class="string">"foo"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> type = <span class="string">"Nicholas"</span>,</span><br><span class="line">	name = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outputInfo</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(value === node);   <span class="comment">//true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> outputInfo(&#123; type, name&#125; = node);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(type); <span class="comment">//Identifier</span></span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">//foo</span></span><br></pre></td></tr></table></figure>
-<p>解构赋值表达式（也就是=右侧的表达式）如果为null或undefined会导致程序抛出错误。<br><a id="more"></a></p>
+<p>解构赋值表达式（也就是=右侧的表达式）如果为null或undefined会导致程序抛出错误。</p>
+<a id="more"></a>
 <p><em>默认值</em></p>
 <p>使用解构赋值表达式时，如果指定的局部变量名称在对象中不存在，那么这个局部变量会被赋值为undefined：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> node = &#123;</span><br><span class="line">	type: <span class="string">"Identifier"</span>,</span><br><span class="line">	name: <span class="string">"foo"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; type, name, value &#125; = node;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(value); <span class="comment">//undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(type); <span class="comment">//Identifier</span></span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">//foo</span></span><br></pre></td></tr></table></figure>
@@ -458,15 +459,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">vue2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">helloWrold</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">前端</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,10 +484,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">ES6</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vue2</a>
               </li>
             
             <div class="clearfix"></div>
