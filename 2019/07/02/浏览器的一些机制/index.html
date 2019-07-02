@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="https://fengerzou.github.io">
   <title>浏览器的一些机制 | fengerzou的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="浏览器###事件机制 ###事件触发三阶段  捕获：在事件对象到达事件目标之前，事件对象必须从window经过目标的各个祖先节点传播到事件目标。 这个阶段被我们称之为捕获阶段。在这个阶段注册的事件监听器在事件到达其目标前必须先处理事件。 目标：事件对象到达其事件目标。 这个阶段被我们称为目标阶段。一旦事件对象到达事件目标，该阶段的事件监听器就要对它进行处理。如果一个事件对象类型被标志为不能冒泡。那">
+  <meta name="description" content="###事件机制事件触发三阶段  捕获：在事件对象到达事件目标之前，事件对象必须从window经过目标的各个祖先节点传播到事件目标。 这个阶段被我们称之为捕获阶段。在这个阶段注册的事件监听器在事件到达其目标前必须先处理事件。 目标：事件对象到达其事件目标。 这个阶段被我们称为目标阶段。一旦事件对象到达事件目标，该阶段的事件监听器就要对它进行处理。如果一个事件对象类型被标志为不能冒泡。那么对应的事件对">
 <meta name="keywords" content="前端,浏览器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浏览器的一些机制">
 <meta property="og:url" content="https://fengerzou.github.io/2019/07/02/浏览器的一些机制/index.html">
 <meta property="og:site_name" content="fengerzou的博客">
-<meta property="og:description" content="浏览器###事件机制 ###事件触发三阶段  捕获：在事件对象到达事件目标之前，事件对象必须从window经过目标的各个祖先节点传播到事件目标。 这个阶段被我们称之为捕获阶段。在这个阶段注册的事件监听器在事件到达其目标前必须先处理事件。 目标：事件对象到达其事件目标。 这个阶段被我们称为目标阶段。一旦事件对象到达事件目标，该阶段的事件监听器就要对它进行处理。如果一个事件对象类型被标志为不能冒泡。那">
+<meta property="og:description" content="###事件机制事件触发三阶段  捕获：在事件对象到达事件目标之前，事件对象必须从window经过目标的各个祖先节点传播到事件目标。 这个阶段被我们称之为捕获阶段。在这个阶段注册的事件监听器在事件到达其目标前必须先处理事件。 目标：事件对象到达其事件目标。 这个阶段被我们称为目标阶段。一旦事件对象到达事件目标，该阶段的事件监听器就要对它进行处理。如果一个事件对象类型被标志为不能冒泡。那么对应的事件对">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://fengerzou.github.io/assets/imgs/cors/cors.png">
 <meta property="og:image" content="https://fengerzou.github.io/assets/imgs/cors/cors2.png">
-<meta property="og:updated_time" content="2019-07-02T08:50:57.129Z">
+<meta property="og:updated_time" content="2019-07-02T08:57:27.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器的一些机制">
-<meta name="twitter:description" content="浏览器###事件机制 ###事件触发三阶段  捕获：在事件对象到达事件目标之前，事件对象必须从window经过目标的各个祖先节点传播到事件目标。 这个阶段被我们称之为捕获阶段。在这个阶段注册的事件监听器在事件到达其目标前必须先处理事件。 目标：事件对象到达其事件目标。 这个阶段被我们称为目标阶段。一旦事件对象到达事件目标，该阶段的事件监听器就要对它进行处理。如果一个事件对象类型被标志为不能冒泡。那">
+<meta name="twitter:description" content="###事件机制事件触发三阶段  捕获：在事件对象到达事件目标之前，事件对象必须从window经过目标的各个祖先节点传播到事件目标。 这个阶段被我们称之为捕获阶段。在这个阶段注册的事件监听器在事件到达其目标前必须先处理事件。 目标：事件对象到达其事件目标。 这个阶段被我们称为目标阶段。一旦事件对象到达事件目标，该阶段的事件监听器就要对它进行处理。如果一个事件对象类型被标志为不能冒泡。那么对应的事件对">
 <meta name="twitter:image" content="https://fengerzou.github.io/assets/imgs/cors/cors.png">
   
     <link rel="alternative" href="/atom.xml" title="fengerzou的博客" type="application/atom+xml">
@@ -180,7 +180,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><p>###事件机制 ###<br><strong>事件触发三阶段</strong></p>
+        <p>###事件机制<br><strong>事件触发三阶段</strong></p>
 <ul>
 <li><strong>捕获</strong>：在事件对象到达事件目标之前，事件对象必须从window经过目标的各个祖先节点传播到事件目标。 这个阶段被我们称之为捕获阶段。在这个阶段注册的事件监听器在事件到达其目标前必须先处理事件。</li>
 <li><strong>目标</strong>：事件对象到达其事件目标。 这个阶段被我们称为目标阶段。一旦事件对象到达事件目标，该阶段的事件监听器就要对它进行处理。如果一个事件对象类型被标志为不能冒泡。那么对应的事件对象在到达此阶段时就会终止传播。</li>
@@ -548,15 +548,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">vue2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">helloWrold</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">vue2</a>
               </li>
              
               <li class="article-tag-list-item">
