@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="fengerzou的博客">
 <meta property="og:description" content="一、DNS预读取 1、DNS与域名解析 DNS全称为Domain Name System，即域名系统，是域名和IP地址相互映射的一个分布式数据库。IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。域名解析就是域名到IP地址的转换过程。域名的解析工作由DNS服务器完成。 DNS 请求需要的带宽非常小，但是延迟却有点高，这点在手机网络上特别明显。DNS 预读取是一项">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-04T07:21:29.463Z">
+<meta property="og:updated_time" content="2019-07-04T07:23:09.726Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="性能">
 <meta name="twitter:description" content="一、DNS预读取 1、DNS与域名解析 DNS全称为Domain Name System，即域名系统，是域名和IP地址相互映射的一个分布式数据库。IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。域名解析就是域名到IP地址的转换过程。域名的解析工作由DNS服务器完成。 DNS 请求需要的带宽非常小，但是延迟却有点高，这点在手机网络上特别明显。DNS 预读取是一项">
@@ -185,6 +185,7 @@
 <p>这样可以极大的加速（尤其是移动网络环境下）页面的加载。在某些图片较多的页面中，在发起图片加载请求之前预先把域名解析好将会有至少 5% 的图片加载速度提升。</p>
 <p><strong>2、打开和关闭 DNS 预读取</strong></p>
 <p>你可以通过在服务器端发送 X-DNS-Prefetch-Control 报头，或是在文档中使用值为 http-equiv 的 &#60;meta&gt; 标签：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"x-dns-prefetch-control"</span> content=<span class="string">"off"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>您可以通过将 content 的参数设置为“on”来改变设置。</p>
 <p><strong>3、强制查询特定主机名</strong></p>
 <p>你可以通过使用 rel 属性值为 link type 中的 dns-prefetch 的 &#60;link&gt; 标签来对特定域名进行预读取<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"dns-prefetch"</span> href=<span class="string">"http://www.spreadfirefox.com/"</span>&gt;</span><br></pre></td></tr></table></figure></p>

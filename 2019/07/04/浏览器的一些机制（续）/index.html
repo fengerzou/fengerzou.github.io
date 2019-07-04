@@ -17,7 +17,7 @@
 <meta property="og:description" content="四、存储 1、cookie cookie（HTTP状态管理机制）是识别用户，实现持久会话的好方式。可以笼统地把cookie分为两类：会话cookie和持久cookie。会话cookie是一种临时cookie，它记录了用户访问站点时的设置和偏好。用户退出浏览器时，会话cookie就被删除了。持久cookie的生存时间更长一些，它们存储在硬盘上，浏览器退出，计算机重启时它们仍然存在。通常会用持久coo">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://fengerzou.github.io/assets/imgs/webStorage/webStorage.png">
-<meta property="og:updated_time" content="2019-07-04T05:08:10.771Z">
+<meta property="og:updated_time" content="2019-07-04T07:22:56.191Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浏览器的一些机制（续）">
 <meta name="twitter:description" content="四、存储 1、cookie cookie（HTTP状态管理机制）是识别用户，实现持久会话的好方式。可以笼统地把cookie分为两类：会话cookie和持久cookie。会话cookie是一种临时cookie，它记录了用户访问站点时的设置和偏好。用户退出浏览器时，会话cookie就被删除了。持久cookie的生存时间更长一些，它们存储在硬盘上，浏览器退出，计算机重启时它们仍然存在。通常会用持久coo">
@@ -183,6 +183,7 @@
 <p><strong>1、cookie</strong></p>
 <p>cookie（HTTP状态管理机制）是识别用户，实现持久会话的好方式。可以笼统地把cookie分为两类：会话cookie和持久cookie。会话cookie是一种临时cookie，它记录了用户访问站点时的设置和偏好。用户退出浏览器时，会话cookie就被删除了。持久cookie的生存时间更长一些，它们存储在硬盘上，浏览器退出，计算机重启时它们仍然存在。通常会用持久cookie维护某个用户会周期性访问的站点的配置文件或登录名。两者唯一的区别就是它们的过期时间。如果设置了Discard参数，或者没有设置Expires或Max-Age参数来说明扩展的过期时间，这个cookie就是一个会话cookie。</p>
 <p>语法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set</span>-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt; </span><br><span class="line">Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Expires=&lt;date&gt;</span><br><span class="line">Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Max-Age=&lt;non-zero-digit&gt;</span><br><span class="line">Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Domain=&lt;domain-value&gt;</span><br><span class="line">Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Path=&lt;path-value&gt;</span><br><span class="line">Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Secure</span><br><span class="line">Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; HttpOnly</span><br><span class="line"></span><br><span class="line">Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; SameSite=Strict</span><br><span class="line">Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; SameSite=Lax</span><br><span class="line"></span><br><span class="line">// Multiple directives are also possible, for example:</span><br><span class="line">Set-Cookie: &lt;cookie-name&gt;=&lt;cookie-value&gt;; Domain=&lt;domain-value&gt;; Secure; HttpOnly</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>指令：<br><strong>&#60;cookie-name&gt;=&#60;cookie-value&gt;</strong><br>一个 cookie 开始于一个名称/值对：</p>
 <ul>
 <li><p>&#60;cookie-name&gt; 可以是除了控制字符 (CTLs)、空格 (spaces) 或制表符 (tab)之外的任何 US-ASCII 字符。同时不能包含以下分隔字符： ( ) &lt; &gt; @ , ; : \ “ /  [ ] ? = { }.</p>
