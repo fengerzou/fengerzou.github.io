@@ -3,6 +3,25 @@
   
     
     <entry>
+      <title>性能</title>
+      <link href="/2019/07/04/%E6%80%A7%E8%83%BD/"/>
+      <url>/2019/07/04/%E6%80%A7%E8%83%BD/</url>
+      
+        <content type="html"><![CDATA[<p><strong>一、DNS预读取</strong></p><p><strong>1、DNS与域名解析</strong></p><p>DNS全称为Domain Name System，即域名系统，是域名和IP地址相互映射的一个分布式数据库。IP地址是网络上标识站点的数字地址，为了方便记忆，采用域名来代替IP地址标识站点地址。域名解析就是域名到IP地址的转换过程。域名的解析工作由DNS服务器完成。</p><p>DNS 请求需要的带宽非常小，但是延迟却有点高，这点在手机网络上特别明显。DNS 预读取是一项使<strong>浏览器主动去执行域名解析</strong>的功能，其范围包括文档的所有链接，无论是图片的，CSS 的，还是 JavaScript 等其他用户能够点击的 URL。预读取 DNS 能让延迟明显减少一些，例如用户点击链接时。在某些情况下，延迟能减少一秒钟。 </p><p>在某些浏览器中这个预读取的行为将会与页面实际内容<strong>并行发生</strong>（而不是串行）。正因如此，某些高延迟的域名的解析过程才不会卡住资源的加载。</p><p>这样可以极大的加速（尤其是移动网络环境下）页面的加载。在某些图片较多的页面中，在发起图片加载请求之前预先把域名解析好将会有至少 5% 的图片加载速度提升。</p><p><strong>2、打开和关闭 DNS 预读取</strong></p><p>你可以通过在服务器端发送 X-DNS-Prefetch-Control 报头，或是在文档中使用值为 http-equiv 的 &#60;meta&gt; 标签：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta http-equiv=<span class="string">"x-dns-prefetch-control"</span> content=<span class="string">"off"</span>&gt;</span><br></pre></td></tr></table></figure></p><p>您可以通过将 content 的参数设置为“on”来改变设置。</p><p><strong>3、强制查询特定主机名</strong></p><p>你可以通过使用 rel 属性值为 link type 中的 dns-prefetch 的 &#60;link&gt; 标签来对特定域名进行预读取<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"dns-prefetch"</span> href=<span class="string">"http://www.spreadfirefox.com/"</span>&gt;</span><br></pre></td></tr></table></figure></p><p>在这个例子中，Firefox将预解析域名”<a href="http://www.spreadfirefox.com&quot;。" target="_blank" rel="noopener">www.spreadfirefox.com&quot;。</a></p><p>而且，&#60;link&gt; 元素也可以使用不完整的 URL 的主机名来标记预解析，但这些主机名前必需要有双斜线：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=<span class="string">"dns-prefetch"</span> href=<span class="string">"//www.spreadfirefox.com"</span>&gt;</span><br></pre></td></tr></table></figure></p><p>强制对域名进行预读取在有的情况下很有用。比如， 在网站的主页上，强制在整个网站上频繁引用的域名的预解析，即使它们不在主页本身上使用。即使主页的性能可能不受影响，这将提高整体站点性能。</p><p><br><br><strong>二、缓存</strong></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> 性能 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>浏览器的一些机制（续）</title>
       <link href="/2019/07/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%9C%BA%E5%88%B6%EF%BC%88%E7%BB%AD%EF%BC%89/"/>
       <url>/2019/07/04/%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E6%9C%BA%E5%88%B6%EF%BC%88%E7%BB%AD%EF%BC%89/</url>
